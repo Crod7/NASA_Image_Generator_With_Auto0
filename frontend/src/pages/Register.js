@@ -1,6 +1,7 @@
 import '../css/register.css';
 
 import { useEffect, useRef, useState} from "react";
+import { Link } from 'react-router-dom'
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -103,17 +104,17 @@ const Register = () => {
     return (
         <div className='register-container'>
         {success ? (
-            <section>
+            <section className='register-section'>
                 <h1>Success!</h1>
                 <p>
                     <a href="#">Sign In</a>
                 </p>
             </section>
         ) : (
-            <section>
+            <section className='register-section'>
                 <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                 <h1>Register</h1>
-                <form onSubmit={handleSubmit}>
+                <form className="register-form" onSubmit={handleSubmit}>
                     <label htmlFor="username">
                         First Name:
                         <span className={validFirstName ? "valid" : "hide"}>
@@ -254,9 +255,8 @@ const Register = () => {
                 </form>
                 <p>
                     Already registered?<br />
-                    <span className="line">
-                        {/*router link*/}
-                        <a href="#">Sign in</a>
+                    <span className="register-line">
+                        <Link to='/login'>Sign in</Link>
                     </span>
                 </p>
             </section>
@@ -265,4 +265,4 @@ const Register = () => {
     )
 }
 
-export default Register
+export default Register;

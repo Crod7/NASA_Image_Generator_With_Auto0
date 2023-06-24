@@ -1,11 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
 :root {
-  --primary: rgb(215, 215, 215);
+  --primary: white;
   --secondary: #4554f1;
   --accent: rgb(58, 215, 110);
+  --buttonBackground: white;
+  --primaryFont: white;
+  --secondaryFont: rgb(177, 177, 177);
 }
 
 body {
   margin: 0;
+  margin-top: 50px;
   min-height: 100vh;
   background-color: var(--primary);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

@@ -1,6 +1,9 @@
 @import "index.css";
 
 .navbar {
+    position: fixed;
+    top: 0px;
+    min-width: 100vw;
     height: 50px;
     background-color: var(--secondary);
     color: white;

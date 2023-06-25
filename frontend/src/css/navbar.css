@@ -17,10 +17,20 @@
     font-weight: bold;
 }
 
+.navbar-title-link {
+    color: var(--primaryFont);
+    text-decoration: none;
+}
+
 .navbar-list {
     display: flex;
     align-items: center;
     list-style: none;
+}
+
+.navbar-list-link {
+    text-decoration: none;
+    font-weight: bold;
 }
 
 .navbar-list-item {

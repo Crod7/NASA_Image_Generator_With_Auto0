@@ -253,12 +253,12 @@ const Register = () => {
                         Sign Up
                     </button>
                 </form>
-                <p>
-                    <p className='text-bottom'>Already registered?<br /></p>
-                    <span className="register-line">
-                        <Link to='/login'><p className='link-to-login'>Sign in</p></Link>
-                    </span>
-                </p>
+                <p className='text-bottom'>Already registered?<br /></p>
+                <span className="register-line">
+                    <Link to='/login'>
+                        <p className='link-to-login'>Sign in</p>
+                    </Link>
+                </span>
             </section>
             )}
         </div>

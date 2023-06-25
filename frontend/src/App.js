@@ -9,24 +9,26 @@ import Login from './pages/Login';
 
 
 function App() {
+  
+  const user = false; // To later be used to check for active users
   return (
     <div>
-      <Navbar />
-
       <div className="App">
         <BrowserRouter>
+          <Navbar user={user}/>
+
           <Routes>
             <Route 
               path="/register" 
-              element = {<Register/>} 
+              element = {user ? <Navigate to="/" /> : <Register/>} 
             />
             <Route 
               path="/login" 
-              element = {<Login/>} 
+              element = {user ? <Navigate to="/" /> : <Login/>} 
             />
             <Route 
-              path="/home" 
-              element = {<Home/>} 
+              path="/" 
+              element = {!user ? <Navigate to="/login" /> : <Home/>} 
             />
           </Routes>
         </BrowserRouter>

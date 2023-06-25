@@ -107,13 +107,13 @@ const Register = () => {
             <section className='register-section'>
                 <h1>Success!</h1>
                 <p>
-                    <a href="#">Sign In</a>
+                    <Link to='/login'><p className='link-to-login'>Sign In</p></Link>
                 </p>
             </section>
         ) : (
             <section className='register-section'>
                 <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-                <h1>Register</h1>
+                <h1 className='register-title'>Register</h1>
                 <form className="register-form" onSubmit={handleSubmit}>
                     <label htmlFor="username">
                         First Name:
@@ -249,14 +249,14 @@ const Register = () => {
                         Must match the first password input field.
                     </p>
 
-                    <button disabled={!validFirstName || !validLastName || !validEmail || !validPwd || !validMatch ? true : false}>
+                    <button className='register-submit' disabled={!validFirstName || !validLastName || !validEmail || !validPwd || !validMatch ? true : false}>
                         Sign Up
                     </button>
                 </form>
                 <p>
-                    Already registered?<br />
+                    <p className='text-bottom'>Already registered?<br /></p>
                     <span className="register-line">
-                        <Link to='/login'>Sign in</Link>
+                        <Link to='/login'><p className='link-to-login'>Sign in</p></Link>
                     </span>
                 </p>
             </section>

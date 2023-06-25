@@ -9,14 +9,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; 
+    min-height: 100vh;
     padding: 1rem 0.5rem;
     font-family: 'Nunito', sans-serif;
     font-size: 22px;
-    color: var(--primaryFont);
+    color: var(--secondaryFont);
 }
 
 .register-section {
+    -webkit-box-shadow: 0px 5px 33px -21px rgb(0, 0, 0);
+    -moz-box-shadow: 0px 5px 33px -21px rgb(0, 0, 0);
+    box-shadow: 0px 5px 33px -21px rgb(0, 0, 0);
     border-radius: 20px;
     width: 100%;
     max-width: 420px;
@@ -25,7 +28,6 @@
     flex-direction: column;
     justify-content: flex-start;
     padding: 1rem;
-    background-color: var(--secondary);
 }
 
 .register-form {
@@ -42,21 +44,11 @@ a, a:visited {
 
 input[type="text"],
 input[type="password"],
-button,
-textarea {
+button {
     font-family: 'Nunito', sans-serif;
     font-size: 22px;
     padding: 0.25rem;
     border-radius: 0.5rem;
-}
-
-label,
-button {
-    margin-top: 1rem;
-}
-
-button {
-    padding: 0.5rem;
 }
 
 .instructions {
@@ -102,4 +94,28 @@ button {
 
 .register-line {
     display: inline-block;
+}
+
+.register-submit {
+    width: 100%;
+    background-color: var(--secondary);
+    color: var(--primaryFont);
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    padding: 15px 20px;
+    border-radius: 5px;
+}
+
+.register-title {
+    color: var(--secondaryFont);
+}
+
+.text-bottom {
+    color: var(--blackFont);
+}
+
+.link-to-login {
+    color: var(--accent);
+    font-weight: bold;
 }

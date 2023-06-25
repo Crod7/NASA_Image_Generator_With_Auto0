@@ -23,9 +23,9 @@ const Login = () => {
             <div className="or">OR</div>
             </div>
             <div className="right">
-                <input type="text" placeholder="Email" />
-                <input type="text" placeholder="Password" />
-                <button className="submit">Login</button>
+                <input type="text" required="true" placeholder="Email" />
+                <input type="password" placeholder="Password" />
+                <button className="login-submit">Login</button>
 
                 <p className="need-an-account-text">Need an Account?</p>
                 <Link to='/register'><p className="link-to-create-account-text">Create One</p>Create One</Link>

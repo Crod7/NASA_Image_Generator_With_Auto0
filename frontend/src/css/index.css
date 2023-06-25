@@ -7,6 +7,7 @@
   --buttonBackground: white;
   --primaryFont: white;
   --secondaryFont: rgb(177, 177, 177);
+  --blackFont: black;
 }
 
 body {

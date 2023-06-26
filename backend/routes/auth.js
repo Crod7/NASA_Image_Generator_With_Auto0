@@ -1,10 +1,10 @@
-require('dotenv').config();
 const passport = require('passport');
 const router = require('express').Router();
+const User = require('../models/userModel');
+const jwt = require('jsonwebtoken');
 
 
-
-// Google Auth Routes
+// Login Logout Routes
 router.get('/logout', (req,res) => {
     req.logout();
     res.redirect(process.env.CLIENT_URL);
@@ -27,6 +27,9 @@ router.get('/login/success', (req, res) => {
     }
 });
 
+
+
+// Google Auth Routes
 router.get("/google", passport.authenticate("google", { scope: ['profile', 'email'] }));
 router.get(
     '/google/callback',

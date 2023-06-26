@@ -1,11 +1,15 @@
-require('dotenv').config()
+// Dependencies
+require('dotenv').config();
 const express = require('express');
 const cookieSession = require("cookie-session");
 const passport = require("passport");
 const cors = require('cors');
-const authRoute = require('./routes/auth')
-const passportSetup = require('./config/passport')
-const corsOptions = require('./config/corsOptions')
+// Route Imports
+const authRoute = require('./routes/auth');
+const userRoute = require('./routes/userRoute');
+// Config Imports
+const passportSetup = require('./config/passport');
+const corsOptions = require('./config/corsOptions');
 
 
 
@@ -23,12 +27,14 @@ app.use(cookieSession(
 ));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(cors(corsOptions))
+app.use(cors(corsOptions));
 
 
 
 // List of routes
 app.use('/auth', authRoute);
+app.use('/user', userRoute);
+
 
 
 

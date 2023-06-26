@@ -2,6 +2,8 @@ require('dotenv').config();
 const passport = require('passport');
 const router = require('express').Router();
 
+
+
 // Google Auth Routes
 router.get('/logout', (req,res) => {
     req.logout();
@@ -20,19 +22,19 @@ router.get('/login/success', (req, res) => {
         res.status(200).json({
             success: true,
             message: 'Success',
-            user: req.user, //user information
+            user: req.user,
         })
     }
 });
-// Google Auth Route
-router.get("/google", passport.authenticate("google", { scope: ['profile'] }));
 
-
+router.get("/google", passport.authenticate("google", { scope: ['profile', 'email'] }));
 router.get(
     '/google/callback',
     passport.authenticate('google', {
     successRedirect: process.env.CLIENT_URL,
     failureRedirect: '/login/failed'
 }))
+
+
 
 module.exports = router;

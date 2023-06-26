@@ -19,15 +19,15 @@ const Navbar = ({user}) => {
                     <ul className="navbar-list">
                         <li className="navbar-list-item">
                             <img
-                                src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW58ZW58MHx8MHx8fDA%3D&w=1000&q=80"
+                                src={ user.photos[0].value }
                                 alt=""
                                 className="navbar-avatar"
                             />
                         </li>
                         <li className="navbar-list-item">
-                            Carlos Rodriguez
+                            { user.displayName }
                         </li>
-                        <li className="navbar-list-item" onClick={logout}>
+                        <li className="navbar-list-item" onClick={ logout }>
                             Logout
                         </li>
                     </ul>

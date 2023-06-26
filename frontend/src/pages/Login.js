@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
 
-  const google = () => {
+  const googleLogin = () => {
     window.open('http://localhost:5000/auth/google', '_self')
   }
 
@@ -17,7 +17,7 @@ const Login = () => {
         </div>
         <div className="bottom-section">
             <div className="left">
-            <div className="login-button" onClick={google}>
+            <div className="login-button" onClick={ googleLogin }>
                 <img src={Google} alt="" className="icon" />
                 Google
             </div>

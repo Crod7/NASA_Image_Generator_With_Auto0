@@ -2,6 +2,11 @@ import { Link } from 'react-router-dom';
 import '../css/navbar.css'
 
 const Navbar = ({user}) => {
+
+    const logout = () => {
+        window.open('http://localhost:5000/auth/logout', '_self')
+    }
+
     return (
         <div className="navbar">
             <span className="navbar-title">
@@ -22,7 +27,7 @@ const Navbar = ({user}) => {
                         <li className="navbar-list-item">
                             Carlos Rodriguez
                         </li>
-                        <li className="navbar-list-item">
+                        <li className="navbar-list-item" onClick={logout}>
                             Logout
                         </li>
                     </ul>

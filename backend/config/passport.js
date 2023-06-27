@@ -2,6 +2,8 @@
 const User = require('../models/userModel');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const bcrypt = require('bcrypt');
+
 
 
 // Finds or Creates new user with Google Oauth 2.0
@@ -13,6 +15,14 @@ passport.use(
       callbackURL: process.env.CALLBACK_URL,
     },
     async (accessToken, refreshToken, profile, done) => {
+
+      /**
+       * Encrypt password for google user based on access token, secures account. Access Token only
+       * obtained through successful google login, and hashed password can't be used in database leak.
+       */ 
+      const salt = await bcrypt.genSalt(10)
+      const hash = await bcrypt.hash(accessToken, salt)
+
       try {
         let user = await User.findOne({ googleId: profile.id });
 
@@ -25,7 +35,7 @@ passport.use(
             googleId: profile.id,
             name: profile.displayName,
             email: profile.emails[0].value,
-            password: accessToken,
+            password: hash,
             profilePicture: profile.photos[0].value
           });
 

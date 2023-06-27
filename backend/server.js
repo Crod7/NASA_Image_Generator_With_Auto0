@@ -4,6 +4,7 @@ const express = require('express');
 const cookieSession = require("cookie-session");
 const passport = require("passport");
 const cors = require('cors');
+const mongoose = require('mongoose')
 // Route Imports
 const authRoute = require('./routes/auth');
 const userRoute = require('./routes/userRoute');
@@ -38,7 +39,13 @@ app.use('/user', userRoute);
 
 
 
-// Server listen
-app.listen(process.env.PORT, () => {
-  console.log('Server is running on port 5000');
-});
+// Server listen & Database Connection
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => {
+        app.listen(process.env.PORT, () =>{
+            console.log('listening on port 5500')
+        })
+    })
+    .catch((error) => {
+        console.log(error)
+    })

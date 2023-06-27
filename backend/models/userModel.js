@@ -1,3 +1,4 @@
+// Dependencies
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const validator = require('validator');
@@ -10,6 +11,10 @@ const Schema = mongoose.Schema;
 
 // Base Schema
 const userSchema = new Schema({
+    googleId: {
+        type: String,
+        required: false
+    },
     name: {
         type: String,
         required: true,
@@ -22,6 +27,10 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
+    },
+    profilePicture: {
+        type: String,
+        required: false
     }
 });
 
@@ -73,5 +82,23 @@ userSchema.statics.login = async function( email, password ){
     // Return the user if the login process is successful.
     return user
 }
+
+
+
+// Find or create method
+userSchema.statics.findOrCreate = async function (email, name) {
+    // Check if the user already exists with the given email
+    let user = await this.findOne({ email });
+    // If the user already exists, return it
+    if (user) {
+      return user;
+    }
+    // If the user doesn't exist, create a new user
+    user = await this.create({ email, name });
+    // Return the newly created user
+    return user;
+};
+
+
 
 module.exports = mongoose.model('User', userSchema)

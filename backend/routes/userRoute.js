@@ -1,7 +1,7 @@
-const User = require('../models/userModel');
+// Dependencies
 const express = require('express');
-
 const router = express.Router();
+
 
 
 // Controller functions

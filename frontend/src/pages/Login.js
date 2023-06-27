@@ -1,14 +1,18 @@
+// Imports
 import Google from "../img/google.png";
 import '../css/login.css'
 import { Link } from "react-router-dom";
+// Dependencies
+const backendURL = require('../config/backendURL');
+
 
 
 const Login = () => {
 
   const googleLogin = () => {
-    window.open('http://localhost:5000/auth/google', '_self')
+    window.open(`${backendURL}/auth/google`, '_self')
   }
-
+  
   return (
     <div className="login-container">
       <div className="login-box">

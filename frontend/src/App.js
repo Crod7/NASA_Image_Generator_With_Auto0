@@ -1,12 +1,15 @@
+// Imports
 import './css/App.css';
-import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
-
+import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
+import { useEffect, useState } from 'react';
 // Pages and Componenets
-import Navbar from './components/Navbar'
-import Home from './pages/Home'
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
-import { useEffect, useState } from 'react';
+// Dependencies
+const backendURL = require('./config/backendURL');
+
 
 
 function App() {
@@ -14,7 +17,7 @@ function App() {
   
   useEffect(() => {
     const getUser = () => {
-      fetch('http://localhost:5000/auth/login/success', {
+      fetch(`${backendURL}/auth/login/success`, {
         method: 'GET',
         credentials: 'include',
         headers: {

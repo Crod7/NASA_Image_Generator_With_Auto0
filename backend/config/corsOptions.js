@@ -1,11 +1,12 @@
 // Cross Origin Resource Sharing
 
+
+
 const corsOptions = {
     origin: [
         "http://localhost:3000",
         "http://localhost:5000",
-        "lh3.googleusercontent.com",
-        "https://www.google.com"
+        "https://lh3.googleusercontent.com/" // This allows user's profile image from google to be obtained
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true // Enable sending cookies with the request

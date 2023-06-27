@@ -1,10 +1,16 @@
+// Imports
+import emptyProfilePic from '../img/empty.png';
 import { Link } from 'react-router-dom';
-import '../css/navbar.css'
+import '../css/navbar.css';
+// Dependencies
+const backendURL = require('../config/backendURL');
+
+
 
 const Navbar = ({user}) => {
 
     const logout = () => {
-        window.open('http://localhost:5000/auth/logout', '_self')
+        window.open(`${backendURL}/auth/logout`, '_self');
     }
 
     return (
@@ -19,13 +25,13 @@ const Navbar = ({user}) => {
                     <ul className="navbar-list">
                         <li className="navbar-list-item">
                             <img
-                                src={ user.photos[0].value }
+                                src={ user.profilePicture ? user.profilePicture : {emptyProfilePic}}
                                 alt=""
                                 className="navbar-avatar"
                             />
                         </li>
                         <li className="navbar-list-item">
-                            { user.displayName }
+                            { user.name }
                         </li>
                         <li className="navbar-list-item" onClick={ logout }>
                             Logout

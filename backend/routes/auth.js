@@ -1,7 +1,7 @@
+// Dependencies
 const passport = require('passport');
 const router = require('express').Router();
-const User = require('../models/userModel');
-const jwt = require('jsonwebtoken');
+
 
 
 // Login Logout Routes

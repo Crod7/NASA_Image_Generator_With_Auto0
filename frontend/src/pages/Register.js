@@ -1,17 +1,23 @@
+// Imports
 import '../css/register.css';
-
 import { useEffect, useRef, useState} from "react";
 import { Link } from 'react-router-dom'
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+
 
 // name, email and password format
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9- _]{2,100}$/;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
+
+
 // endpoint for registration on the backend api
 const REGISTER_URL = '/register';
+
+
 
 const Register = () => {
     const userRef = useRef();

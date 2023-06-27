@@ -1,20 +1,17 @@
-// Imports
 import './css/App.css';
-import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-// Pages and Componenets
+import { useAuthContext } from './hooks/useAuthContext';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
-// Dependencies
 const backendURL = require('./config/backendURL');
 
-
-
 function App() {
-  const [user, setUser] = useState(null);
-  
+  const [googleUser, setGoogleUser] = useState(null);
+  let { user } = useAuthContext(); // Access the user and setUser from the AuthContext
+
   useEffect(() => {
     const getUser = () => {
       fetch(`${backendURL}/auth/login/success`, {
@@ -25,39 +22,37 @@ function App() {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Credentials': true,
         },
-      }).then((response) => {
-        if (response.status === 200) return response.json();
-        throw new Error('Authentication has failed! At App.js > const getUser > .then((response)')
-      }).then(resObject => {
-        setUser(resObject.user);
-      }).catch(err => {
-        console.log(err)
       })
-    }
+        .then((response) => {
+          if (response.status === 200) return response.json();
+          throw new Error('Authentication has failed!');
+        })
+        .then((resObject) => {
+          // Update the user state with the received user object
+          setGoogleUser(resObject.user);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
     getUser();
-  }, []);
+    if (!googleUser){
+      user = googleUser
+    }
+  }, [setGoogleUser]); // Include setGoogleUser in the dependency array to avoid stale closures
 
-  console.log(user)
-  
+  console.log(`This is on app file: ${user}`);
+
   return (
     <div>
       <div className="App">
         <BrowserRouter>
-          <Navbar user={user}/>
+          <Navbar user={user} />
 
           <Routes>
-            <Route 
-              path="/register" 
-              element = {user ? <Navigate to="/" /> : <Register/>} 
-            />
-            <Route 
-              path="/login" 
-              element = {user ? <Navigate to="/" /> : <Login/>} 
-            />
-            <Route 
-              path="/" 
-              element = {!user ? <Navigate to="/login" /> : <Home/>} 
-            />
+            <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
+            <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
+            <Route path="/" element={!user ? <Navigate to="/login" /> : <Home />} />
           </Routes>
         </BrowserRouter>
       </div>

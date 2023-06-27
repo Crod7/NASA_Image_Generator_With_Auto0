@@ -57,7 +57,7 @@ userSchema.statics.signup = async function( name, email, password ) {
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password, salt)
     // Will create the user and return it to the database.
-    const user = await this.create({ name, email, password: hash })
+    const user = await this.create({googleId: null, name, email, password: hash, profilePicture: null})
     return user
 };
 
@@ -81,7 +81,7 @@ userSchema.statics.login = async function( email, password ){
     }
     // Return the user if the login process is successful.
     return user
-}
+};
 
 
 
@@ -101,4 +101,4 @@ userSchema.statics.findOrCreate = async function (email, name) {
 
 
 
-module.exports = mongoose.model('User', userSchema)
+module.exports = mongoose.model('User', userSchema);

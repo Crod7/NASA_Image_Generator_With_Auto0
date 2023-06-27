@@ -4,6 +4,7 @@ import { useEffect, useRef, useState} from "react";
 import { Link } from 'react-router-dom'
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useSignup } from '../hooks/useSignup'
 
 
 
@@ -22,6 +23,7 @@ const REGISTER_URL = '/register';
 const Register = () => {
     const userRef = useRef();
     const errRef = useRef();
+    const {signup, error, isLoading} = useSignup();
 
     const [name, setName] = useState('');
     const [validName, setValidName] = useState(false);
@@ -80,9 +82,7 @@ const Register = () => {
             return
         }
         try {
-            /*
-                Send JSON data to backend to complete registration!
-            */
+            await signup( name, email, pwd )
             setSuccess(true);
         } catch (err){
             if (!err?.response) {
@@ -101,9 +101,7 @@ const Register = () => {
         {success ? (
             <section className='register-section'>
                 <h1>Success!</h1>
-                <p>
                     <Link to='/login'><p className='link-to-login'>Sign In</p></Link>
-                </p>
             </section>
         ) : (
             <section className='register-section'>

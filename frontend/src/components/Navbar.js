@@ -2,6 +2,7 @@
 import emptyProfilePic from '../img/empty.png';
 import { Link } from 'react-router-dom';
 import '../css/navbar.css';
+import { useAuthContext } from '../hooks/useAuthContext';
 // Dependencies
 const backendURL = require('../config/backendURL');
 
@@ -9,7 +10,12 @@ const backendURL = require('../config/backendURL');
 
 const Navbar = ({user}) => {
 
-    const logout = () => {
+    const { dispatch } = useAuthContext()
+    const logout = async () => {
+        // User removed from local storage
+        await localStorage.removeItem('user')
+        // Auth Context
+        await dispatch({type: 'LOGOUT'});
         window.open(`${backendURL}/auth/logout`, '_self');
     }
 

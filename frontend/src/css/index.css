@@ -37,3 +37,13 @@ button {
     padding: 0.25rem;
     border-radius: 0.5rem;
 }
+/* Manages error message for Login and Register pages.*/
+.error-text{
+  color: red;
+  border: 2px solid red;
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+  margin: 10px 0px 10px 0px;
+}

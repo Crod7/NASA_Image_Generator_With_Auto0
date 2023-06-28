@@ -9,7 +9,6 @@ const backendURL = require('../config/backendURL');
 
 
 const Navbar = ({user}) => {
-
     const { dispatch } = useAuthContext()
     const logout = async () => {
         // User removed from local storage
@@ -30,10 +29,9 @@ const Navbar = ({user}) => {
                 user ? (
                     <ul className="navbar-list">
                         <li className="navbar-list-item">
-                            {console.log(user.profilePicture)}
                             <img
-                                src={ user.profilePicture ? user.profilePicture : {emptyProfilePic}}
-                                alt=""
+                                src= { user.profilePicture !== null ? user.profilePicture : emptyProfilePic}
+                                alt= ''
                                 className="navbar-avatar"
                             />
                         </li>

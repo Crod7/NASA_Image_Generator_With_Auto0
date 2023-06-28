@@ -22,8 +22,8 @@ const REGISTER_URL = '/register';
 
 const Register = () => {
     const userRef = useRef();
-    const errRef = useRef();
-    const {signup, error, isLoading} = useSignup();
+    const {signup, isLoading} = useSignup();
+    const [error, setError] = useState('');
 
     const [name, setName] = useState('');
     const [validName, setValidName] = useState(false);
@@ -41,7 +41,6 @@ const Register = () => {
     const [validMatch, setValidMatch] = useState(false);
     const [matchFocus, setMatchFocus] = useState(false);
 
-    const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
 
     useEffect(() => {
@@ -68,31 +67,38 @@ const Register = () => {
     }, [pwd, matchPwd]);
 
     useEffect(() => {
-        setErrMsg('');
+        setError('');
     }, [name, email, pwd, matchPwd]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!validName || !validEmail || !validPwd || !validMatch){
+            setError('No text fields can be empty.');
+            return;
+        }
         // To prevent js hack to enable button
         const v1 = USER_REGEX.test(name);
         const v2 = EMAIL_REGEX.test(email);
         const v3 = PWD_REGEX.test(pwd);
         if (!v1 || !v2 || !v3 ) {
-            setErrMsg("Invalid Entry");
+            setError("Invalid Entry");
             return
         }
         try {
-            await signup( name, email, pwd )
-            setSuccess(true);
+            const response = await signup( name, email, pwd );
+            setError(response.error);
+            console.log(response)
+            if (response.email){ // If we get a valid response, then we see the success page.
+                setSuccess(true);
+            }
         } catch (err){
             if (!err?.response) {
-                setErrMsg('No server response');
+                setError('No server response');
             } else if (err.response?.status === 409){
-                setErrMsg('Email taken');
+                setError('Email taken');
             } else {
-                setErrMsg('Registration failed');
+                setError('Registration failed');
             }
-            errRef.current.focus();
         }
     }
 
@@ -105,8 +111,8 @@ const Register = () => {
             </section>
         ) : (
             <section className='register-section'>
-                <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                 <h1 className='register-title'>Register</h1>
+                {error && <p className="error-text">{error}</p>}
                 <form className="register-form" onSubmit={handleSubmit}>
                     <label htmlFor="username">
                         Name:
@@ -214,7 +220,7 @@ const Register = () => {
                         Must match the first password input field.
                     </p>
 
-                    <button className='register-submit' disabled={!validName || !validEmail || !validPwd || !validMatch ? true : false}>
+                    <button className='register-submit'>
                         Sign Up
                     </button>
                 </form>

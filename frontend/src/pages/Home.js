@@ -1,7 +1,7 @@
-const Home = () => {
+const Home = ({user}) => {
     return(
         <div>
-            <p>This will be the home page.</p>
+            <p>Hello {user.name}!</p>
         </div>
     )
 }

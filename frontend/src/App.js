@@ -40,7 +40,7 @@ function App() {
       setUser(authContext.authUser);
     }
     getUser();
-  }, [authContext.authUser, user]);
+  }, [authContext.authUser]);
 
   return (
     <div>
@@ -49,9 +49,9 @@ function App() {
           <Navbar user={user} />
 
           <Routes>
-            <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
-            <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
-            <Route path="/" element={!user ? <Navigate to="/login" /> : <Home />} />
+            <Route path="/register" element={user ? <Home user={user} /> : <Register />} />
+            <Route path="/login" element={user ? <Home user={user} /> : <Login />} />
+            <Route path="/" element={!user ? <Navigate to="/login" /> : <Home user={user}/>} />
           </Routes>
         </BrowserRouter>
       </div>

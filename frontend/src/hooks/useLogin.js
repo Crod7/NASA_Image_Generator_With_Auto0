@@ -26,7 +26,6 @@ export const useLogin = () => {
             body: JSON.stringify({ email, password })
         })
         const json = await response.json()
-        console.log(json)
 
 
 
@@ -46,6 +45,7 @@ export const useLogin = () => {
             localStorage.setItem('user', JSON.stringify(json))
             // Auth Context
             dispatch({type: 'LOGIN', payload: json});
+            console.log(json)
             // Set loading state back to normal.
             setIsLoading(false);
             return json;

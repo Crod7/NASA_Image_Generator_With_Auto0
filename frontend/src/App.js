@@ -1,7 +1,7 @@
 import './css/App.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { useAuthContext } from './hooks/useAuthContext';
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from './context/AuthContext';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Register from './pages/Register';
@@ -9,39 +9,38 @@ import Login from './pages/Login';
 const backendURL = require('./config/backendURL');
 
 function App() {
-  const [googleUser, setGoogleUser] = useState(null);
-  let { user } = useAuthContext(); // Access the user and setUser from the AuthContext
+  const authContext = useContext(AuthContext);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const getUser = () => {
-      fetch(`${backendURL}/auth/login/success`, {
-        method: 'GET',
-        credentials: 'include',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Credentials': true,
-        },
-      })
-        .then((response) => {
-          if (response.status === 200) return response.json();
-          throw new Error('Authentication has failed!');
-        })
-        .then((resObject) => {
-          // Update the user state with the received user object
-          setGoogleUser(resObject.user);
-        })
-        .catch((err) => {
-          console.log(err);
+    const getUser = async () => {
+      try {
+        const response = await fetch(`${backendURL}/auth/login/success`, {
+          method: 'GET',
+          credentials: 'include',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Credentials': true,
+          },
         });
-    };
-    getUser();
-    if (!googleUser){
-      user = googleUser
-    }
-  }, [setGoogleUser]); // Include setGoogleUser in the dependency array to avoid stale closures
 
-  console.log(`This is on app file: ${user}`);
+        if (response.status === 200) {
+          const resObject = await response.json();
+          setUser(resObject.user);
+        } else {
+          throw new Error('Authentication has failed!');
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    // Check if authContext.authUser exists and user is null
+    if (authContext.authUser && !user) {
+      setUser(authContext.authUser);
+    }
+    getUser();
+  }, [authContext.authUser, user]);
 
   return (
     <div>

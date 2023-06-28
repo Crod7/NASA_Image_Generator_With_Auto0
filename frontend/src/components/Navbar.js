@@ -30,6 +30,7 @@ const Navbar = ({user}) => {
                 user ? (
                     <ul className="navbar-list">
                         <li className="navbar-list-item">
+                            {console.log(user.profilePicture)}
                             <img
                                 src={ user.profilePicture ? user.profilePicture : {emptyProfilePic}}
                                 alt=""

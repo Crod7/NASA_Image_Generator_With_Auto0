@@ -44,16 +44,19 @@ const Login = () => {
             </div>
             <div className="right">
                 <input 
+                className="input-box"
                 type="email" 
                 placeholder="Email"
                 onChange = {(e) => setEmail(e.target.value)}
                 value = {email} 
                 />
-                <input type="password"
-                 placeholder="Password"
-                 onChange={(e) => setPassword(e.target.value)}
-                 value={password}
-                  />
+                <input 
+                className="input-box"
+                type="password"
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+                />
                 <button className="login-submit" onClick={ normalLogin }>Login</button>
 
                 <p className="need-an-account-text">Need an Account?</p>

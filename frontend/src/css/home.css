@@ -1,0 +1,51 @@
+@import "index.css";
+
+.navbar {
+    position: fixed;
+    top: 0px;
+    min-width: 100vw;
+    height: 50px;
+    background-color: var(--secondary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.nasa-image{
+    max-height: 80vh;
+}
+
+.home-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.navbar-title-link {
+    color: var(--primaryFont);
+    text-decoration: none;
+}
+
+.navbar-list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+.navbar-list-link {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar-list-item {
+    margin-right: 20px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.navbar-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}

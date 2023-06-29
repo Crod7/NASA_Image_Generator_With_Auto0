@@ -5,9 +5,11 @@ const cookieSession = require("cookie-session");
 const passport = require("passport");
 const cors = require('cors');
 const mongoose = require('mongoose')
+
 // Route Imports
 const authRoute = require('./routes/auth');
 const userRoute = require('./routes/userRoute');
+const nasaRoute = require('./routes/nasaRoute');
 // Config Imports
 const passportSetup = require('./config/passport');
 const corsOptions = require('./config/corsOptions');
@@ -36,7 +38,7 @@ app.use(cors(corsOptions));
 // List of routes
 app.use('/auth', authRoute);
 app.use('/user', userRoute);
-
+app.use('/nasa', nasaRoute);
 
 
 
@@ -44,9 +46,9 @@ app.use('/user', userRoute);
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         app.listen(process.env.PORT, () =>{
-            console.log('listening on port 5500')
+            console.log('listening on port 5000');
         })
     })
     .catch((error) => {
-        console.log(error)
+        console.log(error);
     })

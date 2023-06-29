@@ -25,8 +25,6 @@ const Home = ({ user }) => {
     getNasaImageOfTheDay();
   }, []);
 
-  console.log("requestObject:", requestObject);
-
   return (
     <div className="home-container">
       <div className="home-layout">

@@ -46,7 +46,6 @@ export const useLogin = () => {
             localStorage.setItem('user', JSON.stringify(json))
             // Auth Context
             dispatch({type: 'LOGIN', payload: json});
-            console.log(json)
             // Set loading state back to normal.
             setIsLoading(false);
             return json;

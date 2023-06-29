@@ -1,5 +1,6 @@
 // Imports
 import emptyProfilePic from '../img/empty.png';
+import logo from '../img/logo.png';
 import { Link } from 'react-router-dom';
 import '../css/navbar.css';
 import { useAuthContext } from '../hooks/useAuthContext';
@@ -20,11 +21,11 @@ const Navbar = ({user}) => {
 
     return (
         <div className="navbar">
-            <span className="navbar-title">
-                <Link to='/' className='navbar-title-link'>
-                    NASA Daily Image Generator
+            <ul className="navbar-list">
+                <Link to='/'>
+                    <img src= {logo} alt= '' className="navbar-avatar" />
                 </Link>
-            </span>
+            </ul>
             {
                 user ? (
                     <ul className="navbar-list">

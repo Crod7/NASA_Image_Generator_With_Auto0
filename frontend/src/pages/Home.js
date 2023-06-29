@@ -28,16 +28,47 @@ const Home = ({ user }) => {
   console.log("requestObject:", requestObject);
 
   return (
-    <div>
-      <p className="home-title">Hello {user.name}!</p>
-      {requestObject && (
-        <img 
-          src={requestObject.url}
-          alt=''
-          className="nasa-image"
-        />
-      )}
+    <div className="home-container">
+      <div className="home-layout">
+        <p className="home-greetings">Hello {user.name}!</p>
+        <p className="home-title">Today's Daily Image</p>
+        {requestObject && (
+          <img 
+            src={requestObject.url}
+            alt=''
+            className="nasa-image"
+          />
+        )}
+        <div className="home-nasa-info">
+          <p className="home-nasa-info-subtitle">Title</p>
+          <div>
+            {requestObject && (
+              <p>{requestObject.title}</p>
+            )}
+          </div>
+          <p className="home-nasa-info-subtitle">Today's Date</p>
+          <div>
+            {requestObject && (
+              <p>{requestObject.date}</p>
+            )}
+          </div>
+          <p className="home-nasa-info-subtitle">Credit</p>
+          <div>
+            {requestObject && (
+              <p>{requestObject.credit}</p>
+            )}
+          </div>
+          <p className="home-nasa-info-subtitle">Explanation</p>
+          <div>
+            {requestObject && (
+              <p>{requestObject.explanation}</p>
+            )}
+          </div>
+        </div>
+      </div>
+
     </div>
+
   );
 }
 

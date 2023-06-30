@@ -10,7 +10,10 @@ const corsOptions = {
         'https://nasa-daily-image-generator-api.onrender.com/auth/google/callback',
         'https://nasa-daily-image-generator-api.onrender.com/auth/login/success',
         'https://accounts.google.com/',
-        'https://nasa-daily-image-generator-5ze8.vercel.app'
+        'https://nasa-daily-image-generator-5ze8.vercel.app',
+        'https://nasa-daily-image-generator-5ze8.vercel.app/auth/login/success',
+        'https://nasa-daily-image-generator-5ze8.vercel.app/auth/google/callback',
+
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,

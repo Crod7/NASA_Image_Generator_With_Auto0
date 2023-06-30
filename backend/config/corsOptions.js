@@ -8,11 +8,13 @@ const corsOptions = {
         "https://nasa-daily-image-generator-api.onrender.com/",
         "https://nasa-daily-image-generator.onrender.com",
         'https://nasa-daily-image-generator-api.onrender.com/auth/google/callback',
-        
+        'https://nasa-daily-image-generator-api.onrender.com/auth/login/success',
+        'https://accounts.google.com/'
+
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization'], // Add the desired headers
+    allowedHeaders: ['Content-Type', 'Authorization', 'access-control-allow-credentials'],
 };
 
 module.exports = corsOptions;

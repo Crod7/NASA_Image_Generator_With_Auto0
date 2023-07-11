@@ -14,6 +14,7 @@ function App() {
 
   useEffect(() => {
     const getUser = async () => {
+      // Attempts to set user if auth from 3rd party is successful
       try {
         const response = await fetch(`${backendURL}/auth/login/success`, {
           method: 'GET',
@@ -27,8 +28,15 @@ function App() {
 
         if (response.status === 200) {
           const resObject = await response.json();
-          console.log(resObject);
-          setUser(resObject);
+          // This grabs all the data from the response and sets it properly to the variables needed for the login to work. 
+          // Later on we will add the accessToken. Without this, we get an error with react childrens.
+          const currentUser = {
+            id: resObject.user.id,
+            name: resObject.user.displayName,
+            email: resObject.user.emails[0].value,
+            profilePicture: resObject.user.photos[0].value,
+          }
+          setUser(currentUser);
         } else {
           throw new Error('Authentication has failed!');
         }

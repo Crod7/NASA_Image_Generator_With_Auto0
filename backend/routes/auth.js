@@ -23,7 +23,6 @@ router.get('/login/success', (req, res) => {
             success: true,
             message: 'Success',
             user: req.user,
-            Id: req.user.id,
         })
     }
 });

@@ -29,7 +29,7 @@ function App() {
         if (response.status === 200) {
           const resObject = await response.json();
           // This grabs all the data from the response and sets it properly to the variables needed for the login to work. 
-          // Later on we will add the accessToken. Without this, we get an error with react childrens.
+          // Later on we will add the accessToken. Without this, we get an error 'Object not valid as a React child.'
           const currentUser = {
             id: resObject.user.id,
             name: resObject.user.displayName,

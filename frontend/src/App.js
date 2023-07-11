@@ -27,7 +27,8 @@ function App() {
 
         if (response.status === 200) {
           const resObject = await response.json();
-          setUser(resObject.user);
+          console.log(resObject);
+          setUser(resObject);
         } else {
           throw new Error('Authentication has failed!');
         }

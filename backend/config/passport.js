@@ -1,7 +1,9 @@
 // Dependencies
-const User = require('../models/userModel');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+
+
+const User = require('../models/userModel');
 const bcrypt = require('bcrypt');
 
 
@@ -28,7 +30,8 @@ passport.use(
 
         if (user) {
           // User already exists in the database
-          return done(null, user);
+          // OLD CODE POSSIBLE ERRORS return done(null, user);
+          return done(null, profile);
         } else {
           // Create a new user in the database
           const newUser = new User({
@@ -40,7 +43,8 @@ passport.use(
           });
 
           user = await newUser.save();
-          return done(null, user);
+          // OLD CODE POSSIBLE ERRORS return done(null, user);
+          return done(null, profile);
         }
       } catch (error) {
         return done(error);

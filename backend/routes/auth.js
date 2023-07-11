@@ -23,6 +23,7 @@ router.get('/login/success', (req, res) => {
             success: true,
             message: 'Success',
             user: req.user,
+            Id: req.user.id,
         })
     }
 });
@@ -31,6 +32,7 @@ router.get('/login/success', (req, res) => {
 
 // Google Auth Routes
 router.get("/google", passport.authenticate("google", { scope: ['profile', 'email'] }));
+
 router.get(
     '/google/callback',
     passport.authenticate('google', {

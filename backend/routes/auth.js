@@ -1,6 +1,8 @@
 // Dependencies
 const passport = require('passport');
 const router = require('express').Router();
+require('../config/passport');
+
 
 
 

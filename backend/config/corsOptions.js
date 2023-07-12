@@ -10,7 +10,7 @@ const corsOptions = {
         'https://nasa-daily-image-generator-api.onrender.com/auth/google/callback',
         'https://nasa-daily-image-generator-api.onrender.com/auth/login/success',
         'https://accounts.google.com/',
-        'https://accounts.youtube.com/accounts/SetSID',
+        'https://accounts.youtube.com/accounts/SetSID/',
         'https://accounts.youtube.com/',
         'https://accounts.youtube.com/accounts/',
         'https://nasa-daily-image-generator-5ze8.vercel.app',

@@ -45,45 +45,9 @@ app.use(cors(corsOptions));
 
 
 // List of routes
-//app.use('/auth', authRoute);
+app.use('/auth', authRoute);
 app.use('/user', userRoute);
 app.use('/nasa', nasaRoute);
-
-// Login Logout Routes
-app.get('/auth/logout', (req,res) => {
-  req.logout();
-  res.redirect(process.env.CLIENT_URL);
-});
-
-app.get('/auth/login/failed', (req, res) => {
-  res.status(401).json({
-      success: false,
-      message: 'failure, could not authenticate the user with google.'
-  })
-});
-
-app.get('/auth/login/success', (req, res) => {
-  if (req.user) {
-      res.status(200).json({
-          success: true,
-          message: 'Success',
-          user: req.user,
-      })
-  }
-});
-
-
-
-// Google Auth Routes
-app.get("/auth/google", passport.authenticate("google", { scope: ['profile', 'email'] }));
-
-app.get(
-  '/auth/google/callback',
-  passport.authenticate('google', {
-  successRedirect: process.env.CLIENT_URL,
-  failureRedirect: '/login/failed'
-}));
-
 
 
 // Server listen & Database Connection

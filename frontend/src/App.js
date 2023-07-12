@@ -36,6 +36,8 @@ function App() {
             email: resObject.user.emails[0].value,
             profilePicture: resObject.user.photos[0].value,
           }
+          localStorage.setItem('user', JSON.stringify(resObject));
+          console.log(`local storage user: ${currentUser}`);
           setUser(currentUser);
         } else {
           throw new Error('Authentication has failed!');

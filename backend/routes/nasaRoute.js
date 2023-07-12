@@ -13,7 +13,6 @@ router.get('/apod', async (req, res) => {
   try {
     const response = await axios.get(url, { timeout: 60000 }); // Increase timeout to 60 seconds
     const jsonData = response.data;
-    console.log("response:", jsonData);
     res.json(jsonData);
   } catch (error) {
     console.error({

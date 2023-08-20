@@ -4,7 +4,7 @@ import Link from "next/link";
 import axios from 'axios';
 import User from '../models/UserModel';
 import connectMongoDB from "@/lib/MongoConnect";
-import '../styles/login.css';
+import Google from "../img/google.png";
 
 
 export default function Profile() {
@@ -49,8 +49,28 @@ export default function Profile() {
   }
 
   return (
-    <div>
-      <Link href="/api/auth/login">Login</Link>
+    <div className="login-container">
+      <div className="login-box">
+        <div className="top-section">
+            <h1 className="login-title">Choose a Login Method</h1>
+        </div>
+        <div className="bottom-section">
+            <div className="left">
+            <Link className="login-button" href="/api/auth/login">
+                AuthO Login
+            </Link>
+            </div>
+            <div className="center">
+            <div className="line" />
+            <div className="or">OR</div>
+            </div>
+            <div className="right">
+            <Link className="login-button" href="/api/auth/login">
+                Try w/out Login
+            </Link>
+            </div>
+        </div>
+      </div>
     </div>
   );
 }

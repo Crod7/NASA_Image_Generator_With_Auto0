@@ -6,13 +6,25 @@ or
 yarn install
 
 ```
+Next
 Next, create a 
 ```bash
-.env
+.env.local
 ```
+Go to [https://auth0.com](https://auth0.com) and create an account
+-On the dashboard go to 'applications' tab and click 'applications'.
+-Create a new application by selecting ```Create Application```
 file with the following env variables:
 ```bash
+AUTH0_SECRET=fabdfhabdlfabfha
+AUTH0_BASE_URL=http://localhost:3000
+AUTH0_ISSUER_BASE_URL=https://dev-gbiq18a0ce6tgl34.us.auth0.com
+AUTH0_CLIENT_ID=VHQiYUCSpfRN84ae0Ah9T4KkFFztTLDA
+AUTH0_CLIENT_SECRET=125K_A-jzNzrI3eCHaFGPH8GNl4V1jrkvkjunGObFo1a_ALyF6ix-z_BrBTqI-Hf
+AUTH0_AUDIENCE=
+AUTH0_SCOPE=openid profile
 
+MONGODB_URI=mongodb+srv://admin:admin@cluster0.mbarqms.mongodb.net/mongoNext?retryWrites=true&w=majority
 ```
 
 

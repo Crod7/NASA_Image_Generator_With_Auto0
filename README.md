@@ -6,29 +6,37 @@ or
 yarn install
 
 ```
-Next
+
 Next, create a 
+```.env.local```
+
+Next, we need to fill that ```.env.local``` by making an ```auth0.com``` account:
+-Go to [https://auth0.com](https://auth0.com) and create an account.
+
+-On the dashboard go to ```applications``` tab and click 'applications'.
+
+-Create a new application by selecting ```Create Application``` name your application ```auth0 app name``` and select 'single page application'.
+
+-Go back to ```applications``` and click 'applications' select your ```auth0 app name```.
+
+-Inside this page copy your ```Domain```, ```Client ID``` and ```Client Secret```.
+
+-Go to [https://www.mongodb.com/atlas/database](https://www.mongodb.com/atlas/database) and set up a mongo database.
+
+-Fill with the following env variables:
 ```bash
-.env.local
-```
-Go to [https://auth0.com](https://auth0.com) and create an account
--On the dashboard go to 'applications' tab and click 'applications'.
--Create a new application by selecting ```Create Application```
-file with the following env variables:
-```bash
-AUTH0_SECRET=fabdfhabdlfabfha
+AUTH0_SECRET='Your own string, can be anything'
 AUTH0_BASE_URL=http://localhost:3000
-AUTH0_ISSUER_BASE_URL=https://dev-gbiq18a0ce6tgl34.us.auth0.com
-AUTH0_CLIENT_ID=VHQiYUCSpfRN84ae0Ah9T4KkFFztTLDA
-AUTH0_CLIENT_SECRET=125K_A-jzNzrI3eCHaFGPH8GNl4V1jrkvkjunGObFo1a_ALyF6ix-z_BrBTqI-Hf
+AUTH0_ISSUER_BASE_URL='Your Domain'
+AUTH0_CLIENT_ID='Your Client ID'
+AUTH0_CLIENT_SECRET='Your Client Secret'
 AUTH0_AUDIENCE=
 AUTH0_SCOPE=openid profile
 
-MONGODB_URI=mongodb+srv://admin:admin@cluster0.mbarqms.mongodb.net/mongoNext?retryWrites=true&w=majority
+MONGODB_URI='Link your mongo database'
 ```
 
-
-First, run the development server:
+Finally, run the development server:
 
 ```bash
 npm run dev
@@ -39,13 +47,6 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
 ## Learn More
 

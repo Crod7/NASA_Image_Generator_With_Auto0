@@ -11,6 +11,7 @@ Next, create a
 ```.env.local```
 
 Next, we need to fill that ```.env.local``` by making an ```auth0.com``` account:
+
 -Go to [https://auth0.com](https://auth0.com) and create an account.
 
 -On the dashboard go to ```applications``` tab and click 'applications'.

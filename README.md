@@ -46,6 +46,7 @@ AUTH0_AUDIENCE=
 AUTH0_SCOPE=openid profile
 
 MONGODB_URI=mongodb+srv://admin:admin@cluster0.mbarqms.mongodb.net/mongoNext?retryWrites=true&w=majority
+
 ```
 
 Finally, run the development server:

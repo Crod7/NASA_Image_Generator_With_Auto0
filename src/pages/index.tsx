@@ -41,7 +41,7 @@ export default function Profile() {
         <p>{user.email}</p>
         <Link href="/api/auth/logout">Logout</Link>
         <img src={pictureSrc} alt='none' />
-        <Link href="/fish">
+        <Link href="/home">
           Go to Fish Page
         </Link>
       </div>
